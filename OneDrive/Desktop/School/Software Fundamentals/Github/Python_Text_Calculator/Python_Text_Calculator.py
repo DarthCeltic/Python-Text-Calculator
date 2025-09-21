@@ -1,4 +1,4 @@
-# calculator.py
+# Python_Text_Calculator.py
 
 # Import all necessary functions from other files
 from Factorial import factorial
@@ -18,21 +18,35 @@ def Calculator():
 
         # Display help menu
         elif calc == "?":
-            print("\nSupported: *, /, +, -, %, sq, fact, area, vol")
+            print("\nSupported calculations include basic arithmetic (*, /, +, -, %), squaring (sq), factorial (fact), as well as area and volume calculations. For more specific help, type the calculation type.")
 
         # Handle supported calculations
         elif calc in ["*", "/", "+", "-", "%", "sq", "fact"]:
             try:
                 if calc == "fact":
-                    num = int(input("Please enter the number for factorial: "))
-                    print(f"Answer: {factorial(num)}")
+                    num = int(input("Please enter a non-negative number for factorial: "))
+                    if num < 0:
+                        print("Error: Factorial is not defined for negative numbers.")
+                    else:
+                        print(f"Answer: {factorial(num)}")
                 
                 elif calc == "sq":
                     num = float(input("Please enter the number to square: "))
                     print(f"Answer: {num ** 2}")
                 else:
-                    num1 = float(input("Please enter the first number: "))
-                    num2 = float(input("Please enter the second number: "))
+                    while True:
+                        try:
+                            num1 = float(input("Enter first number: "))
+                            break
+                        except ValueError:
+                            print("Invalid input. Please enter a number.")
+
+                    while True:
+                        try:
+                            num2 = float(input("Enter second number: "))
+                            break
+                        except ValueError:
+                            print("Invalid input. Please enter a number.")
                     
                     if calc == "*":
                         print(f"Answer: {num1 * num2}")
@@ -116,3 +130,4 @@ def Calculator():
 if __name__ == "__main__":
     print("\nWelcome to the Python Calculator!")
     Calculator()
+# Python_Text_Calculator.py
